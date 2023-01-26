@@ -11,9 +11,9 @@ internal partial class Program
     private static void Main(string[] args)
     {
         Console.Clear();
-        int rows = 3, columns = 2, randomMinValue = 0, randomMaxValue = 10;
-        int[,] arrayA = CreateRandomArray(3, 2, randomMinValue, randomMaxValue);
-        int[,] arrayB = CreateRandomArray(2, 3, randomMinValue, randomMaxValue);
+        int columns = 2, randomMinValue = 0, randomMaxValue = 10;
+        int[,] arrayA = CreateRandomArray(3, columns, randomMinValue, randomMaxValue);
+        int[,] arrayB = CreateRandomArray(columns, 3, randomMinValue, randomMaxValue);
         int[,] arrayC = MultipyMatrix(arrayA, arrayB);
         System.Console.WriteLine("Матрица А");
         PrintArray(arrayA);

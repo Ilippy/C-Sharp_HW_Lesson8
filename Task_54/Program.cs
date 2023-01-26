@@ -1,4 +1,13 @@
 ﻿// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// В итоге получается вот такой массив:
+// 7 4 2 1
+// 9 5 3 2
+// 8 4 4 2
+
 internal partial class Program
 {
     private static void Main(string[] args)
@@ -51,7 +60,7 @@ internal partial class Program
                 for (int k = 0; k < array.GetLength(1) - j - 1; k++)  // 0 1 2 
                 {
                     // System.Console.WriteLine($"{array[row, k]} > {array[row, k + 1]} {array[row, k] > array[row, k + 1]} , i = {row}, j = {j}, k = {k}");
-                    if (array[row, k] > array[row, k + 1])
+                    if (array[row, k] < array[row, k + 1])
                     {
                         int temp = array[row, k];
                         array[row, k] = array[row, k + 1];
