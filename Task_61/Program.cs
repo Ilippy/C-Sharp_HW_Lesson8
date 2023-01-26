@@ -9,20 +9,23 @@ internal partial class Program
         PrintArray(pascalTriangle);
     }
 
-    static int[][] PasTri(int n) {
-    int[][] result = new int[n][];
-    result [0] = new int[] { 1 };
-    for (int i = 1; i < n; i++) {
-        result [i] = new int[i + 1];
-        int left = 0;
-        for (int j = 0; j < i; j++) {                                       
-            result [i][j] = result [i - 1] [j] + left;
-            left = result [i - 1] [j];
+    static int[][] PasTri(int n)
+    {
+        int[][] result = new int[n][];
+        result[0] = new int[] { 1 };
+        for (int i = 1; i < n; i++)
+        {
+            result[i] = new int[i + 1];
+            int left = 0;
+            for (int j = 0; j < i; j++)
+            {
+                result[i][j] = result[i - 1][j] + left;
+                left = result[i - 1][j];
+            }
+            result[i][i] = left;
         }
-        result [i] [i] = left;
+        return result;
     }
-    return result;
-}
 
     static void PrintArray(int[][] array)
     {
