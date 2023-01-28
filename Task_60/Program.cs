@@ -11,34 +11,48 @@ internal class Program
     private static void Main(string[] args)
     {
         Console.Clear();
-        int rows = 2, columns = 2, tubes = 2, randomMinValue = 0, randomMaxValue = 100;
+        int rows = 2, columns = 2, tubes = 2, randomMinValue = 10, randomMaxValue = 99;
         int[,,] array = CreateRandomArray(rows, columns, tubes, randomMinValue, randomMaxValue);
         PrintArray(array);
     }
 
     static int[,,] CreateRandomArray(int rows, int columns, int tubes, int minValue, int maxValue)
     {
+        int tempNumber;
         int[,,] array = new int[rows, columns, tubes];
         Random random = new Random();
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < columns; j++)
                 for (int k = 0; k < tubes; k++)
-                    array[i, j, k] = random.Next(minValue, maxValue + 1);
-
+                {
+                    do
+                    {
+                        tempNumber = random.Next(minValue, maxValue + 1);
+                    } while (IsNumberInArray(array, tempNumber));
+                    array[i, j, k] = tempNumber;
+                }
         return array;
     }
 
     static void PrintArray(int[,,] array)
     {
-        for (int i = 0; i < array.GetLength(0); i++)
+        for (int i = 0; i < array.GetLength(2); i++)
         {
-            for (int j = 0; j < array.GetLength(1); j++)
+            Console.WriteLine($"{i+1}-й слой");
+            for (int j = 0; j < array.GetLength(0); j++)
             {
-                for (int k = 0; k < array.GetLength(2); k++)
-                    Console.Write($"{array[i, j, k]}({i},{j},{k}) ");
+                for (int k = 0; k < array.GetLength(1); k++)
+                    Console.Write($"{array[j, k, i]}({j},{k},{i}) ");
                 Console.WriteLine();
             }
-            
+
         }
+    }
+    static bool IsNumberInArray(int[,,] array, int value)
+    {
+        foreach (int item in array)
+            if (item == value) return true;
+        return false;
+
     }
 }
