@@ -18,6 +18,7 @@ internal class Program
 
     static int[,,] CreateRandomArray(int rows, int columns, int tubes, int minValue, int maxValue)
     {
+        DateTime dt = DateTime.Now;
         int tempNumber;
         int[,,] array = new int[rows, columns, tubes];
         Random random = new Random();
@@ -31,6 +32,7 @@ internal class Program
                     } while (IsNumberInArray(array, tempNumber));
                     array[i, j, k] = tempNumber;
                 }
+        Console.WriteLine($"На создание массива ушло {(DateTime.Now - dt).TotalMilliseconds}");
         return array;
     }
 
